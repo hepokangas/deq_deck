@@ -21,6 +21,7 @@ TEST(DeckTest, DrawEmptyExcept) {
     EXPECT_THROW(deck.draw(), std::out_of_range);
 }
 
+
 TEST(DeckTest, Shuffle) {
     Deck<int> deck;
     const int NumberOfCards = 100;

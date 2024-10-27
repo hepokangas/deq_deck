@@ -2,7 +2,6 @@
 
 #include <string>
 
-
 /**
  * @brief The suit of a card.
  */

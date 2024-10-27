@@ -1,10 +1,10 @@
-#include <random>       // std::mt19937
-#include <algorithm>    // std::shuffle
+#include <random>
+#include <algorithm>
 
 template<typename T>
 void Deck<T>::checkForEmptyDeck() const {
     if (deck.empty()) {
-        throw std::out_of_range("Deck is empty");
+        throw std::out_of_range("Accessing empty Deck");
     }
 }
 
@@ -22,7 +22,12 @@ T Deck<T>::bottom() {
 
 template<typename T>
 void Deck<T>::add(const T& card) {
-    deck.push_front(card);
+    try {
+        deck.push_front(card);
+    } catch (const std::bad_alloc& err) {
+        std::cerr << "Memory allocation failed: " << err.what() << std::endl;
+        throw;
+    }
 }
 
 template<typename T>
